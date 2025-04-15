@@ -25,14 +25,15 @@ const resetGame = () => {
 
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
-        if (turnO) { //playerO
+        if (turnO) {
             box.innerText = "O";
+            box.classList.add("o-mark");
             turnO = false;
         } else {
-            //playerX
             box.innerText = "X";
+            box.classList.add("x-mark");
             turnO = true;
-        }
+        }        
         box.disabled = true;
 
         checkWinner();
@@ -47,8 +48,9 @@ const disableBoxes = () => {
 
 const enableBoxes = () => {
     for (let box of boxes) {
-        box.disabled = false;
         box.innerText = "";
+        box.disabled = false;
+        box.classList.remove("x-mark", "o-mark");        
     }
 };
 
